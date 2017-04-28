@@ -19,8 +19,8 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Buscar héroe">
-      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
+      <input class="form-control mr-sm-2" type="text" placeholder="Buscar héroe" (keyup.enter)="findHeroeByName(searchBox.value)" #searchBox>
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="button" (click)="findHeroeByName(searchBox.value)" >Buscar</button>
     </form>
   </div>
 </nav>

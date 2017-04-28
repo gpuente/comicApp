@@ -1,8 +1,8 @@
 <div class="animated fadeIn">
-  <h1>Heroes</h1>
+  <h1>Mostrando resultados para: <small>"{{termino}}"</small></h1>
   <hr>
 
-  <div class="card-columns">
+  <div class="card-columns" *ngIf="heroes.length > 0">
     <div class="card animated fadeIn" *ngFor="let heroe of heroes; let i = index">
       <img class="card-img-top img-fluid" [src]="heroe.img" [alt]="heroe.name">
       <div class="card-block">
@@ -10,14 +10,18 @@
         <p class="card-text">{{ heroe.bio }}</p>
         <p class="card-text"><small class="text-muted">{{ heroe.aparicion }}</small></p>
 
-        <button (click)="verHeroe(i)"
-          type="button" class="btn btn-outline-primary btn-block">
+        <button (click)="verHeroe(heroe.index)"
+          type="button" class="btn btn-outline-primary">
           Ver más...
         </button>
 
-        <!--<a [routerLink]="['/heroe', i]" class="btn btn-outline-primary">Ver más...</a>-->
-
       </div>
+    </div>
+  </div>
+
+  <div *ngIf="heroes.length <= 0">
+    <div class="alert alert-danger" role="alert">
+      <strong>Ups!</strong> no se han encontrado resultados para la búsqueda seleccionada.
     </div>
   </div>
 
